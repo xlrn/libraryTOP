@@ -3,10 +3,29 @@
 <meta charset="UTF-8">
 <title>Page Title</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="stylesheet" href="">
+<link rel="stylesheet" href="styles.css">
 <style>
 </style>
 <body>
+    <div id="buttonContainer">
+        <button id="newBook">New Book</button>
+    </div>
+    <div id="modalForm" class="modal">
+        <div class="modal-content">
+            <span id="close" class="close">&times;</span>
+            <form id="bookForm">
+                <label for="title">Title:</label><br>
+                <input type="text" id="titleInput" name="title" value="aaaaa"><br>
+                <label for="author">Author:</label><br>
+                <input type="text" id="authorInput" name="author" value="sssss"><br>
+                <label for="pages">Pages:</label><br>
+                <input type="text" id="pagesInput" name="pages" value="120"><br>
+                <input type="checkbox" id="readInput" name="read">
+                <label for="read">Read</label><br>
+                <input type="button" value="Submit" id="submit">
+            </form>
+        </div>
+    </div>
     <div id="container"></div>
     <script src="library.js"></script>
 </body>
