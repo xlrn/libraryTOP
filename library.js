@@ -21,6 +21,7 @@ function renderBook(book) {
     div.textContent = `${book.title}, by ${book.author}`;
     let readButton = createButton("Read", book.title);
     let deleteButton = createButton("Delete", book.title);
+    readButton.addEventListener('click', changeColour);
     div.appendChild(readButton);
     div.appendChild(deleteButton);
     container.appendChild(div);
@@ -36,6 +37,12 @@ function createButton(className, title) {
     return button;
 }
 
+function changeColour() {
+    let parent = this.parentNode.style;
+    if (parent.backgroundColor == "green") {
+        parent.backgroundColor = "red"
+    } else parent.backgroundColor = "green";
+}
 
 function renderLibrary(library) {
     library.forEach(book => {
