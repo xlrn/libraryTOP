@@ -1,7 +1,18 @@
 .book {
     background-color: aquamarine;
-    width: 200px;
-    height: 18px;
+    width: 500px;
+    height: 32px;
+    padding-top: 10px;
+}
+
+.deleteButton {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.readButton {
+  margin-left: 100px;
+  margin-right: 5px;
 }
 
 /* The Modal (background) */

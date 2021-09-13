@@ -19,8 +19,23 @@ function renderBook(book) {
     div.setAttribute('id', book.title);
     div.setAttribute('class', 'book');
     div.textContent = `${book.title}, by ${book.author}`;
+    let readButton = createButton("Read", book.title);
+    let deleteButton = createButton("Delete", book.title);
+    div.appendChild(readButton);
+    div.appendChild(deleteButton);
     container.appendChild(div);
 }
+
+function createButton(className, title) {
+    let button = document.createElement('button');
+    let titleNoSpace = title.replace(/\s+/g, '');
+    let classNoCaps = className.toLowerCase();
+    button.setAttribute('id', classNoCaps+titleNoSpace);
+    button.setAttribute('class', classNoCaps+'Button');
+    button.textContent = className;
+    return button;
+}
+
 
 function renderLibrary(library) {
     library.forEach(book => {
