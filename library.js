@@ -47,8 +47,9 @@ function deleteBook() {
     let title = this.parentNode.id;
     let book = myLibrary.find(element => element.title == title);
     let index = myLibrary.indexOf(book);
-    myLibrary.splice(index, 0);
+    myLibrary.splice(index, 1);
     this.parentNode.remove();
+    setStorage();
 }
 
 function changeColour() {
@@ -77,6 +78,7 @@ function renderLibrary(library) {
 const modal = document.querySelector('#modalForm');
 const btn = document.querySelector('#newBook');
 const span = document.querySelector('#close');
+const del = document.querySelector('#deleteStorage');
 
 btn.onclick = function() {
     modal.style.display = "block";
@@ -91,6 +93,10 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+
+del.addEventListener('click', function() {
+    localStorage.clear();
+})
 
 const submit = document.querySelector('#submit');
 submit.addEventListener("click", handleSubmit);
