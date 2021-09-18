@@ -1,3 +1,5 @@
+import {storageAvailable} from '/localstorage.js' 
+
 let myLibrary = [];
 const container = document.querySelector('#container');
 
@@ -51,15 +53,25 @@ function deleteBook() {
 
 function changeColour() {
     let parent = this.parentNode.style;
-    if (parent.backgroundColor == "aquamarine") {
-        parent.backgroundColor = "lightcoral"
-    } else parent.backgroundColor = "aquamarine";
+    let title = this.parentNode.id;
+    let book = myLibrary.find(element => element.title == title);
+    let index = myLibrary.indexOf(book);
+    if (book.read == true) {
+        book.read = false;
+        parent.backgroundColor = "lightcoral";
+    } else {
+        book.read = true;
+        parent.backgroundColor = "aquamarine";
+    }
+    myLibrary.splice(index, 1, book);
 }
 
 function renderLibrary(library) {
-    library.forEach(book => {
-        renderBook(book);
-    })
+    if (library.length != 0) {
+        library.forEach(book => {
+            renderBook(book);
+        })
+    }
 }
 
 const modal = document.querySelector('#modalForm');
@@ -97,9 +109,30 @@ function handleSubmit() {
     addBookToLibrary(newBook, myLibrary);
     renderBook(newBook);
     modal.style.display = "none";
+    setStorage();
 }
 
-addBookToLibrary(sampleBook, myLibrary);
-renderLibrary(myLibrary);
+function setStorage() {
+    let library = JSON.stringify(myLibrary);
+    localStorage.setItem('library', library);
+}
+
+function getStorage() {
+    let loadedLibrary = JSON.parse(localStorage.getItem('library'));
+    myLibrary = loadedLibrary;
+}
+
+if (storageAvailable('localStorage')) {
+    console.log('localStorage available')
+} else {
+    alert('LocalStorage Unavailable');
+}
+
+if (!localStorage.getItem('library')) {
+    setStorage();
+} else {
+    getStorage();
+    renderLibrary(myLibrary);
+}
 
 
