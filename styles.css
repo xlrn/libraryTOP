@@ -1,8 +1,10 @@
 .book {
-    background-color: aquamarine;
     width: 500px;
     height: 32px;
     padding-top: 10px;
+    margin-top: 5px;
+    outline: auto;
+    padding-left: 10px;
 }
 
 .deleteButton {
