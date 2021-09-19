@@ -53,6 +53,7 @@ function deleteBook() {
 }
 
 function changeColour() {
+    let readBtn = document.querySelector(`#${this.id}`);
     let parent = this.parentNode.style;
     let title = this.parentNode.id;
     let book = myLibrary.find(element => element.title == title);
@@ -60,9 +61,11 @@ function changeColour() {
     if (book.read == true) {
         book.read = false;
         parent.backgroundColor = "lightcoral";
+        readBtn.textContent = 'Read'
     } else {
         book.read = true;
         parent.backgroundColor = "aquamarine";
+        readBtn.textContent = 'Unread';
     }
     myLibrary.splice(index, 1, book);
 }
