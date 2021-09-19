@@ -18,8 +18,10 @@ function addBookToLibrary(book, library) {
 
 function renderBook(book) {
     let div = document.createElement('div');
+    let btnCtn = document.createElement('div');
     div.setAttribute('id', book.title);
     div.setAttribute('class', 'book');
+    btnCtn.setAttribute('id', `${book.title}Buttons`)
     if (book.read == true) {
         div.style.backgroundColor = "aquamarine";
     } else div.style.backgroundColor = "lightcoral";
@@ -28,8 +30,9 @@ function renderBook(book) {
     let deleteButton = createButton("Delete", book.title);
     readButton.addEventListener('click', changeColour);
     deleteButton.addEventListener('click', deleteBook);
-    div.appendChild(deleteButton);
-    div.appendChild(readButton);
+    btnCtn.appendChild(deleteButton);
+    btnCtn.appendChild(readButton);
+    div.appendChild(btnCtn);
     container.appendChild(div);
 }
 
