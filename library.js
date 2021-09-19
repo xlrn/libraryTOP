@@ -28,8 +28,8 @@ function renderBook(book) {
     let deleteButton = createButton("Delete", book.title);
     readButton.addEventListener('click', changeColour);
     deleteButton.addEventListener('click', deleteBook);
-    div.appendChild(readButton);
     div.appendChild(deleteButton);
+    div.appendChild(readButton);
     container.appendChild(div);
 }
 
