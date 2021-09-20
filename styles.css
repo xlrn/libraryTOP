@@ -19,6 +19,7 @@
   float: left;
   width: 70%;
   overflow-wrap: break-word;
+  margin-bottom: 4px;
 }
 
 .readButton {
