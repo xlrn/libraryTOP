@@ -5,7 +5,9 @@
     margin-top: 5px;
     outline: auto;
     padding-left: 10px;
-    display: inline-block;
+    display: block;
+    clear: left;
+    float: left;
 }
 .bookButtons {
   float: left;
