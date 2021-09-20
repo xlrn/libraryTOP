@@ -5,11 +5,18 @@
     margin-top: 5px;
     outline: auto;
     padding-left: 10px;
-    overflow-wrap: break-word;
     display: inline-block;
 }
 .bookButtons {
-  float: right;
+  float: left;
+  width: 30%;
+  vertical-align: middle;
+}
+
+.bookInfo {
+  float: left;
+  width: 70%;
+  overflow-wrap: break-word;
 }
 
 .readButton {

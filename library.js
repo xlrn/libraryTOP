@@ -4,6 +4,7 @@ let myLibrary = [];
 const container = document.querySelector('#container');
 
 let sampleBook = new Book("Harry Potter", "JK Rowling", 332, true);
+let longBook = new Book("qwertyuiopasdfghjklzxcvbnm qwertyuiopasdfghjklzxcvbnm qwertyuiopasdfghjklzxcvbnm", "Shrek", 23, false);
 
 function Book(title, author, pages, read = false) {
     this.title = title;
@@ -19,19 +20,24 @@ function addBookToLibrary(book, library) {
 function renderBook(book) {
     let div = document.createElement('div');
     let btnCtn = document.createElement('div');
+    let info = document.createElement('div');
     div.setAttribute('id', book.title);
     div.setAttribute('class', 'book');
-    btnCtn.setAttribute('id', `${book.title}Buttons`)
+    btnCtn.setAttribute('id', `${book.title}Buttons`);
+    btnCtn.setAttribute('class', 'bookButtons');
+    info.setAttribute('id', `${book.title}Info`);
+    info.setAttribute('class', 'bookInfo');
     if (book.read == true) {
         div.style.backgroundColor = "aquamarine";
     } else div.style.backgroundColor = "lightcoral";
-    div.textContent = `${book.title}, by ${book.author}`;
+    info.textContent = `${book.title}, by ${book.author}`;
     let readButton = createButton("Read", book.title);
     let deleteButton = createButton("Delete", book.title);
     readButton.addEventListener('click', changeColour);
     deleteButton.addEventListener('click', deleteBook);
     btnCtn.appendChild(deleteButton);
     btnCtn.appendChild(readButton);
+    div.appendChild(info);
     div.appendChild(btnCtn);
     container.appendChild(div);
 }
@@ -47,18 +53,18 @@ function createButton(className, title) {
 }
 
 function deleteBook() {
-    let title = this.parentNode.id;
+    let title = this.parentNode.parentNode.id;
     let book = myLibrary.find(element => element.title == title);
     let index = myLibrary.indexOf(book);
     myLibrary.splice(index, 1);
-    this.parentNode.remove();
+    this.parentNode.parentNode.remove();
     setStorage();
 }
 
 function changeColour() {
     let readBtn = document.querySelector(`#${this.id}`);
-    let parent = this.parentNode.style;
-    let title = this.parentNode.id;
+    let parent = this.parentNode.parentNode.style;
+    let title = this.parentNode.parentNode.id;
     let book = myLibrary.find(element => element.title == title);
     let index = myLibrary.indexOf(book);
     if (book.read == true) {
@@ -101,8 +107,16 @@ window.onclick = function(event) {
 }
 
 del.addEventListener('click', function() {
+    clearLibrary();
     localStorage.clear();
 })
+
+function clearLibrary() {
+    while (container.firstChild) {
+        container.firstChild.remove();
+    }
+    myLibrary.splice(0, myLibrary.length);
+}
 
 const submit = document.querySelector('#submit');
 submit.addEventListener("click", handleSubmit);
