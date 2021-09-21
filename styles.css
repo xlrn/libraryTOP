@@ -6,6 +6,7 @@ body {
 #header {
   background-color: aqua;
   height: 80px;
+  outline: auto;
 }
 
 #headerTitle {
@@ -16,6 +17,8 @@ body {
 
 #buttonContainer {
   margin-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
 .book {
