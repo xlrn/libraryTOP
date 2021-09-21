@@ -1,6 +1,17 @@
 body {
   font-family: Helvetica, Arial, sans-serif;
   margin: 0;
+  background-color: ivory;
+}
+
+button {
+  background-color: lightgray;
+  text-align: center;
+  border-radius: 3px;
+  border: none;
+  outline: auto;
+  width: 80px;
+  height: 20px;
 }
 
 #header {
@@ -22,7 +33,7 @@ body {
 }
 
 .book {
-    width: 500px;
+    width: 700px;
     min-height: 32px;
     padding-top: 10px;
     margin-top: 5px;
